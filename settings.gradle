@@ -1,0 +1,1 @@
+include ':app', ':music', ':timememory', ':map', ':myshop', ':widget', ':wechatpager', ':autoviewpager', ':gank', ':myclock'

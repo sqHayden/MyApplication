@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <!--cpu-->
+    <string name="cpu_test_title">CPU</string>
+    <string name="ddr_test_title">DDR</string>
+    <string name="emmc_test_title">EMMC</string>
+    <!--cpu-->
+    <string name="cpu_tem">CPU  Temperature:</string>
+    <string name="cpu_usage">CPU         Usage:</string>
+    <string name="cpu_maxfrq">CPU Max Frequency:</string>
+    <string name="cpu_minfrq">CPU  Min Frequency:</string>
+    <string name="cpu_nowfrq">CPU Now Frequency:</string>
+    <string name="cpu_minusage">CPU   Min  Usage:</string>
+    <string name="cpu_maxusage">CPU  Max  Usage:</string>
+    <string name="cpu_avgusage">CPU  Average Usage:</string>
+</resources>

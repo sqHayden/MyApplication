@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Music</string>
+    <!--Video-->
+    <string name="video_time">00:00/null</string>
+</resources>
