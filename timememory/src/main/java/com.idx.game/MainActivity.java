@@ -24,7 +24,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 import Interface.CallBack;
 import adapter.MyAdapter;
-import bean.Card;
+import com.idx.aidldemo.bean.Card;
 import utils.AnimUtil;
 
 public class MainActivity extends AppCompatActivity {

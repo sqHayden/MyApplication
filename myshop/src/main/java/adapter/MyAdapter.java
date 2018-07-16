@@ -9,17 +9,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.idx.aidldemo.bean.AdapterSell;
+import com.idx.aidldemo.bean.order.DaoSession;
+import com.idx.aidldemo.bean.order.Order;
+import com.idx.aidldemo.bean.order.OrderDao;
+import com.idx.aidldemo.bean.sell.Sell;
+import com.idx.aidldemo.bean.sell.SellDao;
+import com.idx.aidldemo.bean.user.User;
+import com.idx.aidldemo.bean.user.UserDao;
 
 import java.util.List;
 
-import bean.AdapterSell;
-import bean.order.DaoSession;
-import bean.order.Order;
-import bean.order.OrderDao;
-import bean.sell.Sell;
-import bean.sell.SellDao;
-import bean.user.User;
-import bean.user.UserDao;
 import demo.list.com.myshop.R;
 import utils.DaoManger;
 import utils.RoundImageUtils;

@@ -15,8 +15,8 @@ import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import bean.user.User;
-import bean.user.UserDao;
+import com.idx.aidldemo.bean.user.User;
+import com.idx.aidldemo.bean.user.UserDao;
 import utils.DaoManger;
 
 public class LoginActivity extends AppCompatActivity {

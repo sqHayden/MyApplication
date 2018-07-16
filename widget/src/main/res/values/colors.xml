@@ -6,4 +6,6 @@
 
     <color name="white">#FFFFFF</color>
     <color name="red">#f70404</color>
+    <color name="black">#000000</color>
+    <color name="inside_color">#d1cdcd</color>
 </resources>

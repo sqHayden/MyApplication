@@ -6,8 +6,8 @@ package utils;
 
 import android.content.Context;
 
-import bean.order.DaoMaster;
-import bean.order.DaoSession;
+import com.idx.aidldemo.bean.order.DaoMaster;
+import com.idx.aidldemo.bean.order.DaoSession;
 
 /**
  * 数据库管理类

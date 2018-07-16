@@ -82,10 +82,12 @@ public class MainActivity extends AppCompatActivity {
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                Log.i(TAG, "onPageScrolled: "+position+","+positionOffset);
             }
 
             @Override
             public void onPageSelected(int position1) {
+                Log.i(TAG, "onPageSelected: ");
                 position = position1;
                 if (position == fragmentList.size()-1) {
                     // 设置当前值为1
@@ -130,6 +132,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onPageScrollStateChanged(int state) {
+                Log.i(TAG, "onPageScrollStateChanged: "+state);
                 //滑动状态改变的方法
                 //state :dragging 拖拽 idle 静止 settling 惯性过程
                 //如果是静止状态,将当前页进行替换
@@ -156,7 +159,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         };
-        timer.schedule(timerTask,0);
+//        timer.schedule(timerTask,0);
     }
 
     /**

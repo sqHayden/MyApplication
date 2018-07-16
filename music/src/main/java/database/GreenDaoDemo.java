@@ -13,12 +13,12 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-import bean.score.DaoMaster;
-import bean.score.DaoSession;
-import bean.score.Score;
-import bean.score.ScoreDao;
-import bean.student.Student;
-import bean.student.StudentDao;
+import com.idx.aidldemo.bean.score.DaoMaster;
+import com.idx.aidldemo.bean.score.DaoSession;
+import com.idx.aidldemo.bean.score.Score;
+import com.idx.aidldemo.bean.score.ScoreDao;
+import com.idx.aidldemo.bean.student.Student;
+import com.idx.aidldemo.bean.student.StudentDao;
 import shaoqi.myapplication.R;
 
 /**

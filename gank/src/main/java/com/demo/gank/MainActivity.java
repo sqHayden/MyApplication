@@ -1,18 +1,23 @@
 package com.demo.gank;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+
 import com.demo.gank.adapter.MyAdapter;
 import com.demo.gank.decoration.OffsetDecoration;
 import com.demo.gank.json.Data;
 import com.demo.gank.json.Result;
 import com.google.gson.Gson;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -23,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
     private final String url = "http://gank.io/api/data/福利/10/";
+    private final int MSG_ONE = 0,MSG_TWO = 1;
     //动画
     protected OffsetDecoration decoration = new OffsetDecoration();
     private RecyclerView mRecyclerView;
@@ -32,6 +38,28 @@ public class MainActivity extends AppCompatActivity {
     private int page_number;
     private boolean mBottomRefreshing;
     private SwipeRefreshLayout refreshLayout;
+    private Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what) {
+                case MSG_ONE:
+                    String json1 = (String)msg.obj;
+                    dealWithJson(json1);
+                    break;
+                case MSG_TWO:
+                    String json2 = (String) msg.obj;
+                    //清空list
+                    results.clear();
+                    //设置页数
+                    page_number = 1;
+                    dealWithJson(json2);
+                    break;
+                default:
+                    break;
+            }
+        }
+    };
 
     //滑动监听
     RecyclerView.OnScrollListener mOnScrollListener = new RecyclerView.OnScrollListener() {
@@ -80,8 +108,6 @@ public class MainActivity extends AppCompatActivity {
         refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                //清空缓存
-                results.clear();
                 //请求最新
                 sendRequestWithOkHttp(false);
             }
@@ -117,18 +143,26 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 try {
                     OkHttpClient okHttpClient = new OkHttpClient();
-
-
-                    if(!isLoad) {
-                        page_number = 1;
-                    }
-                    String send_url;send_url = url + page_number;
+                    String send_url;
+                    send_url = url + page_number;
                     Request request = new Request.Builder().url(send_url).build();
                     Response response = okHttpClient.newCall(request).execute();
                     String json = response.body().string();
                     //子线程等待1s
                     Thread.sleep(1000);
-                    dealWithJson(json);
+                    if(isLoad){
+                        //下拉加载
+                        Message msg = new Message();
+                        msg.what = MSG_ONE;
+                        msg.obj = json;
+                        handler.sendMessage(msg);
+                    }else{
+                        //上拉刷新
+                        Message msg = new Message();
+                        msg.what = MSG_TWO;
+                        msg.obj = json;
+                        handler.sendMessage(msg);
+                    }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -152,23 +186,17 @@ public class MainActivity extends AppCompatActivity {
             Log.i(TAG, "dealWithJson:" + result.getUrl());
         }
         if (add) {
-            //主线程更新视图
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    //初始化适配器
-                    if (myAdapter == null) {
-                        myAdapter = new MyAdapter(MainActivity.this, results);
-                        //设置适配器
-                        mRecyclerView.setAdapter(myAdapter);
-                    } else {
-                        myAdapter.notifyItemRangeInserted(results.size(), 10);
-                    }
-                    //重置
-                    onBottomRefreshComplete();
-                    refreshLayout.setRefreshing(false);
-                }
-            });
+            //初始化适配器
+            if (myAdapter == null) {
+                myAdapter = new MyAdapter(MainActivity.this, results);
+                //设置适配器
+                mRecyclerView.setAdapter(myAdapter);
+            } else {
+                myAdapter.notifyItemRangeInserted(results.size(), 10);
+            }
+            //重置
+            onBottomRefreshComplete();
+            refreshLayout.setRefreshing(false);
         }
     }
 

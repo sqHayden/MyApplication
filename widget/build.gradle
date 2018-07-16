@@ -30,6 +30,16 @@ dependencies {
     compile 'com.android.support:appcompat-v7:26.1.0'
     compile 'com.android.support.constraint:constraint-layout:1.1.0'
     testCompile 'junit:junit:4.12'
+
+    //网络请求
+    compile 'com.squareup.okhttp3:okhttp:3.4.1'
+    //图片加载
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    //卡片布局
+    compile 'com.android.support:cardview-v7:26.1.+'
+    //复用布局
+    compile 'com.android.support:recyclerview-v7:26.1.0'
+
     androidTestCompile('com.android.support.test.espresso:espresso-core:3.0.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })

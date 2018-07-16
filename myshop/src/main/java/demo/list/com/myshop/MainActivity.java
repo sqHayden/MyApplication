@@ -22,11 +22,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import adapter.MyAdapter;
-import bean.AdapterSell;
-import bean.order.OrderDao;
-import bean.sell.SellDao;
-import bean.user.User;
-import bean.user.UserDao;
+import com.idx.aidldemo.bean.AdapterSell;
+import com.idx.aidldemo.bean.order.OrderDao;
+import com.idx.aidldemo.bean.sell.SellDao;
+import com.idx.aidldemo.bean.user.User;
+import com.idx.aidldemo.bean.user.UserDao;
 import utils.DaoManger;
 
 /**

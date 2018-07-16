@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.idx.game.R;
 import java.util.List;
-import bean.Card;
+import com.idx.aidldemo.bean.Card;
 import utils.AnimUtil;
 import utils.RoundImageUtils;
 
